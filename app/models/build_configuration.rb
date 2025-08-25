@@ -3,6 +3,7 @@
 # Table name: build_configurations
 #
 #  id             :bigint           not null, primary key
+#  build_type     :integer          default(0), not null
 #  driver         :integer          not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
@@ -31,5 +32,11 @@ class BuildConfiguration < ApplicationRecord
     docker: 0,
     k8s: 1
   }
+
+  enum :build_type, {
+    dockerfile: 0,
+    buildpack: 1
+  }
+
   validates_presence_of :build_cloud, if: -> { driver == 'k8s' }
 end

@@ -3,6 +3,7 @@
 # Table name: build_configurations
 #
 #  id             :bigint           not null, primary key
+#  build_type     :integer          default(0), not null
 #  driver         :integer          not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
@@ -27,5 +28,15 @@ FactoryBot.define do
     provider
     project
     driver { :docker }
+    build_type { :dockerfile }
+
+    trait :buildpack do
+      build_type { :buildpack }
+    end
+
+    trait :kubernetes do
+      driver { :k8s }
+      association :build_cloud
+    end
   end
 end

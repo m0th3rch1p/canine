@@ -23,6 +23,7 @@ module Projects
       build_config = project.build_configuration || project.build_build_configuration
       build_config.assign_attributes(
         driver: build_config_params[:driver],
+        build_type: build_config_params[:build_type] || 'dockerfile',
         build_cloud_id: build_config_params[:build_cloud_id]
       )
       build_config

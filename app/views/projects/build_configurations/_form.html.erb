@@ -1,8 +1,33 @@
 <div>
   <div>
-    <% build_configuration = project.build_configuration || BuildConfiguration.new(driver: 'docker') %>
+    <% build_configuration = project.build_configuration || BuildConfiguration.new(driver: 'docker', build_type: 'dockerfile') %>
     <%= form.fields_for :build_configuration, build_configuration do |bc_form| %>
       <div class="form-control mt-4">
+        <label class="label">
+          <span class="label-text">Build Method</span>
+        </label>
+        <%= render "shared/partials/radio_selector", selected: build_configuration.build_type, options: [
+          {
+            icon: "skill-icons:docker",
+            name: "project[build_configuration][build_type]",
+            label: "Dockerfile",
+            value: "dockerfile",
+            description: "Build using a Dockerfile in your repository. Full control over the build process."
+          },
+          {
+            icon: "devicon:cloudfoundry",
+            name: "project[build_configuration][build_type]",
+            label: "Buildpack",
+            description: "Auto-detect and build using Cloud Native Buildpacks. No Dockerfile needed.",
+            value: "buildpack"
+          }
+        ] %>
+      </div>
+      
+      <div class="form-control mt-4">
+        <label class="label">
+          <span class="label-text">Build Infrastructure</span>
+        </label>
         <%= render "shared/partials/radio_selector", selected: build_configuration.driver, options: [
           {
             icon: "skill-icons:docker",

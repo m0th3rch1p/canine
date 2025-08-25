@@ -52,6 +52,7 @@ module Projects
       BuildConfiguration.new(
         project:,
         driver: build_config_params[:driver],
+        build_type: build_config_params[:build_type] || 'dockerfile',
         build_cloud_id: build_config_params[:build_cloud_id],
         provider_id: build_config_params[:provider_id] || project.project_credential_provider.provider_id
       )

@@ -15,14 +15,8 @@ class Projects::BuildJob < ApplicationJob
       project_credential_provider = project.project_credential_provider
       project_credential_provider.used!
 
-      # Initialize the Docker builder
-      image_builder = if project.build_configuration&.k8s?
-        build.info("Driver: Kubernetes (#{project.build_configuration.build_cloud.friendly_name})", color: :green)
-        Builders::BuildCloud.new(build)
-      else
-        build.info("Driver: Docker", color: :green)
-        Builders::Docker.new(build)
-      end
+      # Initialize the composable builder
+      image_builder = Builders::Base.new(build)
 
       # Login to registry
       image_builder.login_to_registry(project_credential_provider)
