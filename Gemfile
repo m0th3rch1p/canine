@@ -82,34 +82,20 @@ gem "pagy", "~> 9.4"
 gem "oj", "~> 3.16"
 gem "omniauth", "~> 2.1"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
-
 gem "annotate", "~> 3.2"
-
 gem "rack", "~> 2.2"
-
-gem "tailwindcss-rails", "~> 2.7"
-
+gem "tailwindcss-rails", "~> 3.3.1"
 gem "httparty", "~> 0.23.1"
-
 gem "redcarpet", "~> 3.6"
-
 gem "rubyzip", "~> 3.0"
-
 gem "sassc-rails", "~> 2.1"
-
 gem "cron2english", "~> 0.1.7"
-
 gem "avo", "~> 3.24"
-
 gem "sentry-ruby", "~> 5.23"
 gem "sentry-rails", "~> 5.26"
-
 gem "sys-proctable", "~> 1.3"
-
 gem "omniauth-gitlab", "~> 4.1"
-
 gem "actioncable-enhanced-postgresql-adapter", "~> 1.0"
-
 gem 'flipper', '~> 1.2.2'
 gem 'flipper-active_record', '~> 1.2.2'
 gem 'flipper-ui', '~> 1.2.2'
