@@ -111,3 +111,5 @@ gem "sys-proctable", "~> 1.3"
 gem "omniauth-gitlab", "~> 4.1"
 
 gem "actioncable-enhanced-postgresql-adapter", "~> 1.0"
+
+gem "tailwindcss-ruby", "~> 4.1"

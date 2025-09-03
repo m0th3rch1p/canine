@@ -1,6 +1,5 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss";
+@plugin "daisyui";
 
 @import "tippy.js/dist/tippy.css";
 @import "tippy.js/themes/light.css";
