@@ -14,12 +14,12 @@
             ["288 - 144hrs ago", "288h"]
           ], params[:time_range] || "2h"),
           {},
-          { class: "select !select-sm select-bordered focus:outline-offset-0", "aria-label": "Select example" } 
+          { class: "select select-sm! select-bordered focus:outline-offset-0", "aria-label": "Select example" } 
         %>
         <%= form.submit "Refresh", class: "btn btn-neutral btn-sm" %>
       </div>
 
-      <div role="tablist" class="tabs tabs-sm !h-[2rem] tabs-boxed h-full">
+      <div role="tablist" class="tabs tabs-sm h-8! tabs-boxed h-full">
         <a href="<%= url_for(metric_display: "percentage", time_range: params[:time_range]) %>" role="tab" class="tab <%= metric_display == "percentage" ? "tab-active" : "" %>">Percentage</a>
         <a href="<%= url_for(metric_display: "total", time_range: params[:time_range]) %>" role="tab" class="tab <%= metric_display == "total" ? "tab-active" : "" %>">Total</a>
       </div>

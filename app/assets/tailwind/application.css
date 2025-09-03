@@ -1,12 +1,13 @@
-@import "tailwindcss";
-@plugin "daisyui";
+@import 'tailwindcss';
 
-@import "tippy.js/dist/tippy.css";
-@import "tippy.js/themes/light.css";
-@import "../stylesheets/main.css";
-@import "../stylesheets/components/nav";
-@import "../stylesheets/forms.css";
-@import "../stylesheets/weird_fixes.css";
-@import "../stylesheets/tables.css";
-@import "../stylesheets/pacman.css";
-@import "../stylesheets/custom.css";
+@import 'tippy.js/dist/tippy.css';
+@import 'tippy.js/themes/light.css';
+@import '../stylesheets/main.css';
+@import '../stylesheets/components/nav.css';
+@import '../stylesheets/forms.css';
+@import '../stylesheets/weird_fixes.css';
+@import '../stylesheets/tables.css';
+@import '../stylesheets/pacman.css';
+@import '../stylesheets/custom.css';
+
+@plugin "daisyui";
