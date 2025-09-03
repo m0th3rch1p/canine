@@ -1,4 +1,4 @@
-name: Docker Build Test
+name: Docker Build and Push
 
 on:
   push:
@@ -9,12 +9,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-
-      - name: Build Docker image
-        run: docker build -t canine:test . 

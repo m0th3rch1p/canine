@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Canine is a Rails-based Kubernetes deployment platform that provides an intuitive web interface for managing applications on Kubernetes clusters. The application uses Rails 7.2.2 with PostgreSQL, Redis, and Sidekiq for background processing.
+Canine is a Rails-based Kubernetes deployment platform that provides an intuitive web interface for managing applications on Kubernetes clusters. The application uses Rails 7.2.2 with PostgreSQL, and GoodJob for background processing.
 
 ## Key Commands
 
@@ -86,7 +86,7 @@ rails console
    - Deployments track individual deployment instances
    - Builds handle Docker image creation
 
-2. **Background Jobs** (`app/jobs/`): Sidekiq workers for async operations
+2. **Background Jobs** (`app/jobs/`): GoodJob workers for async operations
    - `BuildJob`: Builds Docker images from source
    - `DeployJob`: Deploys applications to Kubernetes
    - `WebhookJob`: Handles Git webhooks
@@ -136,12 +136,13 @@ rails console
 3. **Background Jobs**: Test async operations with `perform_now` in specs
 4. **Kubernetes Resources**: Update templates in `resources/k8/` for deployment changes
 5. **Migrations**: Use strong migrations practices for zero-downtime deployments
+6. **Linting**: Always run `rubocop -A` at the end of every development cycle
 
 ## Important Patterns
 
 - **Service Objects**: Encapsulate complex business logic in service classes
 - **LightService Actions**: Use for multi-step workflows with error handling
-- **Sidekiq Jobs**: All long-running operations should be async
+- **GoodJob Jobs**: All long-running operations should be async
 - **Kubernetes Client**: Always use `KubernetesService` wrapper, not direct client
 - **Error Handling**: Use Rails error tracking and structured logging
 - **Testing**: Focus on service/action specs for business logic, request specs for APIs

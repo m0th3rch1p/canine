@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
   end
 
   def restart
-    result = Projects::Restart.execute(project: @project)
+    result = Projects::Restart.execute(project: @project, user: current_user)
     if result.success?
       redirect_to project_url(@project), notice: "All services have been restarted"
     else
@@ -60,8 +60,10 @@ class ProjectsController < ApplicationController
 
   # PATCH/PUT /projects/1 or /projects/1.json
   def update
+    result = Projects::Update.call(@project, params)
+
     respond_to do |format|
-      if @project.update(project_params)
+      if result.success?
         format.html { redirect_to @project, notice: "Project is successfully updated." }
         format.json { render :show, status: :ok, location: @project }
       else
@@ -73,7 +75,7 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/1 or /projects/1.json
   def destroy
-    Projects::DestroyJob.perform_later(@project)
+    Projects::DestroyJob.perform_later(@project, current_user)
     respond_to do |format|
       format.html { redirect_to projects_url, status: :see_other, notice: "Project is being destroyed..." }
       format.json { head :no_content }

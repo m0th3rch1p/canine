@@ -79,6 +79,7 @@ Rails.application.routes.draw do
       get :logs
     end
     resource :metrics, only: [ :show ], module: :clusters
+    resource :build_cloud, only: [ :show, :edit, :update, :create, :destroy ], module: :clusters
     member do
       post :test_connection
       post :retry_install
@@ -90,6 +91,7 @@ Rails.application.routes.draw do
 
   authenticate :user, lambda { |u| u.admin? } do
     namespace :admin do
+      mount Flipper::UI.app(Flipper) => '/flipper', as: :flipper
       mount GoodJob::Engine => "/good_job"
     end
   end
@@ -113,6 +115,14 @@ Rails.application.routes.draw do
   if Rails.application.config.local_mode
     get "/github_token", to: "local/pages#github_token"
     put "/github_token", to: "local/pages#update_github_token"
+    namespace :local do
+      resources :onboarding, only: [ :index ]
+      resource :portainer, only: [ :show, :update ] do
+        collection do
+          get :github_oauth
+        end
+      end
+    end
     root to: "projects#index"
   else
     root to: "static#index"
