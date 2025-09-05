@@ -52,8 +52,8 @@ spec:
                 secretKeyRef:
                   name: {{ include "canine.fullname" . }}
                   key: canine-password
-            - name: LOCAL_MODE
-              value: "{{ .Values.canine.localMode }}"
+            - name: BOOT_MODE
+              value: "{{ .Values.canine.bootMode }}"
             - name: SECRET_KEY_BASE
               valueFrom:
                 secretKeyRef:
@@ -61,18 +61,6 @@ spec:
                   key: secret-key-base
             - name: ALLOWED_HOSTNAME
               value: "{{ .Values.canine.allowedHostname }}"
-          livenessProbe:
-            httpGet:
-              path: /up
-              port: http
-            initialDelaySeconds: 30
-            periodSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /up
-              port: http
-            initialDelaySeconds: 10
-            periodSeconds: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

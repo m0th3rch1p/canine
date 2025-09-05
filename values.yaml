@@ -17,7 +17,7 @@ fullnameOverride: ""
 # Canine-specific configuration
 canine:
   port: 3000
-  localMode: true
+  bootMode: "cluster"
   secretKeyBase: "a38fcb39d60f9d146d2a0053a25024b9"
   auth:
     username: "admin"
