@@ -40,18 +40,8 @@ spec:
               value: "postgres://{{ .Values.postgresql.auth.username }}:{{ .Values.postgresql.auth.password }}@{{ include "canine.fullname" . }}-postgresql:{{ .Values.postgresql.primary.service.ports.postgresql }}/{{ .Values.postgresql.auth.database }}"
             - name: PORT
               value: "{{ .Values.canine.port }}"
-            - name: CANINE_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "canine.fullname" . }}
-                  key: canine-username
-            - name: CANINE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "canine.fullname" . }}
-                  key: canine-password
-            - name: LOCAL_MODE
-              value: "{{ .Values.canine.localMode }}"
+            - name: BOOT_MODE
+              value: "{{ .Values.canine.bootMode }}"
             - name: SECRET_KEY_BASE
               valueFrom:
                 secretKeyRef:

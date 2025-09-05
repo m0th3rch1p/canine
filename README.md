@@ -99,10 +99,6 @@ The following table lists the configurable parameters and their default values:
 | `canine.localMode` | Enable local mode | `true` |
 | `canine.appHost` | Application host URL | `http://localhost:3000` |
 | `canine.secretKeyBase` | Rails secret key base | `<generated>` |
-| `canine.auth.username` | Admin username | `admin` |
-| `canine.auth.password` | Admin password | `changeme` |
-| `canine.mountDockerSocket` | Mount Docker socket | `true` |
-| `canine.dockerSocketPath` | Docker socket path | `/var/run/docker.sock` |
 
 ### Service Configuration
 
