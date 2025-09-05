@@ -39,14 +39,7 @@
   Then open: http://localhost:3000
 {{- end }}
 
-2. Login Credentials:
-   -----------------
-   Username: {{ .Values.canine.auth.username }}
-   Password: {{ .Values.canine.auth.password }}
-
-   ⚠️  SECURITY WARNING: These are default credentials. Please change them immediately after first login!
-
-3. Check Application Status:
+2. Check Application Status:
    ------------------------
    # Check if pods are running
    kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "canine.name" . }},app.kubernetes.io/instance={{ .Release.Name }}"
@@ -57,7 +50,7 @@
    # Check logs for the background worker
    kubectl logs --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "canine.name" . }},app.kubernetes.io/component=worker" -c {{ .Chart.Name }}-worker
 
-4. Database Access (if needed):
+3. Database Access (if needed):
    ---------------------------
    kubectl port-forward --namespace {{ .Release.Namespace }} svc/{{ include "canine.fullname" . }}-postgresql 5432:5432
    
@@ -65,7 +58,7 @@
    psql -h localhost -U {{ .Values.postgresql.auth.username }} -d {{ .Values.postgresql.auth.database }}
    Password: {{ .Values.postgresql.auth.password }}
 
-5. Troubleshooting:
+4. Troubleshooting:
    ---------------
    # If pods are not starting, check events:
    kubectl describe pod --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "canine.name" . }}"
