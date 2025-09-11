@@ -113,3 +113,5 @@ gem "actioncable-enhanced-postgresql-adapter", "~> 1.0"
 gem 'flipper', '~> 1.2.2'
 gem 'flipper-active_record', '~> 1.2.2'
 gem 'flipper-ui', '~> 1.2.2'
+
+gem "fast-mcp", github: "yjacquin/fast-mcp", branch: "mcp-2025-06-18"
